@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+  --bg: #fff2f7;
+  --card-bg: #ffe0ee;
+  --card-border: #f5a8c8;
+  --title: #a3145a;
+  --subtitle: #c05587;
+
+  --pill-todo-1: #ffb0cf;
+  --pill-todo-2: #f487ae;
+  --pill-todo-text: #83124d;
+  --pill-todo-border: #ef6f9c;
+
+  --pill-done-1: #c3b0ee;
+  --pill-done-2: #9a7be0;
+  --pill-done-text: #2f1a5c;
+  --pill-done-border: #7c56d6;
+
+  --accent-1: #f487ae;
+  --accent-2: #9a7be0;
+
+  --page-max: 560px;
+  --radius-card: 22px;
+  --radius-pill: 999px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 12% 8%, #ffd9ea 0%, transparent 45%),
+    radial-gradient(circle at 90% 4%, #e7dbfb 0%, transparent 40%);
+  font-family: 'Nunito', sans-serif;
+  color: var(--pill-todo-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 16px 48px;
+}
+
+/* ---------- Header / hero progress ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 18px 16px 16px;
+  margin: 0 -16px 18px;
+  background: linear-gradient(180deg, var(--bg) 78%, rgba(255, 242, 247, 0));
+  backdrop-filter: blur(6px);
+}
+
+.topbar h1 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--title);
+  margin: 0 0 2px;
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+
+.subtitle {
+  text-align: center;
+  margin: 0 0 16px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--subtitle);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.progress-wrap {
+  background: #fff;
+  border: 2px solid var(--card-border);
+  border-radius: 18px;
+  padding: 12px 16px;
+  box-shadow: 0 6px 16px rgba(163, 20, 90, 0.08);
+}
+
+.progress-top-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.progress-percent {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.progress-credits {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--subtitle);
+}
+
+.progress-track {
+  height: 12px;
+  border-radius: var(--radius-pill);
+  background: #f6e3ec;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  transition: width 0.5s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* ---------- Semester cards ---------- */
+
+.semester-card {
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-card);
+  padding: 18px 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(163, 20, 90, 0.10);
+}
+
+.semester-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px dashed var(--card-border);
+}
+
+.semester-head h2 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--title);
+  margin: 0;
+  text-align: center;
+}
+
+.credits-badge {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.pills {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pill {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 13px 20px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s ease;
+  background: linear-gradient(135deg, var(--pill-todo-1), var(--pill-todo-2));
+  color: var(--pill-todo-text);
+  box-shadow: 0 3px 0 rgba(131, 18, 77, 0.18), inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.pill:active {
+  transform: translateY(2px) scale(0.99);
+  box-shadow: 0 1px 0 rgba(131, 18, 77, 0.18);
+}
+
+.pill.done {
+  background: linear-gradient(135deg, var(--pill-done-1), var(--pill-done-2));
+  color: var(--pill-done-text);
+  font-style: italic;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  box-shadow: 0 3px 0 rgba(47, 26, 92, 0.22), inset 0 1px 0 rgba(255,255,255,0.35);
+}
+
+.pill:focus-visible {
+  outline: 3px solid var(--accent-2);
+  outline-offset: 2px;
+}
+
+/* ---------- Electives (collapsible) ---------- */
+
+.electives-card {
+  background: #fff;
+  border: 2px dashed var(--card-border);
+  border-radius: var(--radius-card);
+  margin-bottom: 22px;
+  overflow: hidden;
+}
+
+.electives-toggle {
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 16px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--title);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.electives-sub {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--subtitle);
+}
+
+.electives-list {
+  padding: 4px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.electives-list .pill {
+  font-size: 13.5px;
+  padding: 11px 18px;
+}
+
+/* ---------- Footer ---------- */
+
+.footer-note {
+  text-align: center;
+  margin-top: 8px;
+}
+
+#resetBtn {
+  border: 2px solid var(--card-border);
+  background: #fff;
+  color: var(--subtitle);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+#resetBtn:active {
+  transform: scale(0.97);
+}
+
+.hint {
+  text-align: center;
+  font-size: 11.5px;
+  color: var(--subtitle);
+  opacity: 0.75;
+  margin: 10px 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill, .progress-fill { transition: none; }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Mi Pensum · Literatura y Lengua Castellana</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <h1>Mi Pensum</h1>
+      <p class="subtitle">Licenciatura en Literatura y Lengua Castellana</p>
+
+      <div class="progress-wrap">
+        <div class="progress-top-row">
+          <span class="progress-percent" id="progressPercent">0%</span>
+          <span class="progress-credits" id="progressCredits">0 / 179 créditos</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+    </header>
+
+    <main id="semestersContainer"></main>
+
+    <section class="electives-card">
+      <button class="electives-toggle" id="electivesToggle">
+        <span>Banco de electivas</span>
+        <span class="electives-sub" id="electivesSub">0/42 marcadas ▾</span>
+      </button>
+      <div class="electives-list" id="electivesList" hidden></div>
+    </section>
+
+    <p class="hint">Toca una materia para marcarla como vista. Tu progreso se guarda en este navegador.</p>
+
+    <div class="footer-note">
+      <button id="resetBtn">Reiniciar progreso</button>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
